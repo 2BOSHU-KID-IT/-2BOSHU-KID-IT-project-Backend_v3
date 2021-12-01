@@ -11,10 +11,11 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class PostService {
+public class PostServiceImpl implements PostService{
 
     private final PostRepository postRepository;
 
+    @Override
     public void create(PostRequest request){
         Post post = Post.builder()
                 .address(request.getAddress())
@@ -27,19 +28,23 @@ public class PostService {
         postRepository.save(post);
     }
 
+    @Override
+    public List<Post> getAllPosts(){
+        return postRepository.findAll();
+    }
+
+    @Override
+    public List<Post> search(String keyword, Pageable pageable){
+        return postRepository.findByNameContaining(keyword, pageable);
+    }
+
+    @Override
     public void update(Integer id, PostRequest request){
         Post post = postRepository.findById(id).get();
         post.setHeart(request.getHeart());
     }
 
-    public List<Post> getAllPost(){
-        return postRepository.findAll();
-    }
-
-    public List<Post> search(String keyword, Pageable pageable){
-        return postRepository.
-    }
-
+    @Override
     public void delete(Integer id){
         postRepository.deleteById(id);
     }
