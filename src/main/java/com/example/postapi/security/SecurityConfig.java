@@ -1,4 +1,4 @@
-package com.example.postapi.security.filter;
+package com.example.postapi.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
