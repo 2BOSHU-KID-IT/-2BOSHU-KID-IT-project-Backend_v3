@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/posts")
-@CrossOrigin(origins = "localhost:3000")
 public class PostController {
 
     private final PostServiceImpl postService;
