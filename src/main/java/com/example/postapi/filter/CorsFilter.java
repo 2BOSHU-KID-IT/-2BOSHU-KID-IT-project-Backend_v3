@@ -1,4 +1,4 @@
-package com.example.postapi.config;
+package com.example.postapi.filter;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
