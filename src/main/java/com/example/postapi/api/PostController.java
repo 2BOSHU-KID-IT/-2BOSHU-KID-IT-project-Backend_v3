@@ -1,7 +1,6 @@
 package com.example.postapi.api;
 
 import com.example.postapi.entity.Post;
-import com.example.postapi.request.PostRequest;
 import com.example.postapi.service.PostServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -11,14 +10,10 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/posts")
 public class PostController {
 
     private final PostServiceImpl postService;
-
-    @PostMapping("/create")
-    public void create(@RequestBody PostRequest request){
-        postService.create(request);
-    }
 
     @GetMapping("/list")
     public List<Post> getAllPosts(){
@@ -26,19 +21,12 @@ public class PostController {
     }
 
     @GetMapping("/search")
-    public List<Post> search(@RequestParam(value = "keyword") String keyword, Pageable pageable) {
-        return postService.search(keyword, pageable);
+    public List<Post> searchPosts(@RequestParam(value = "keyword") String keyword, Pageable pageable) {
+        return postService.searchPosts(keyword, pageable);
     }
 
-
-    @PatchMapping("/update/{id}")
-    public void update(@PathVariable Integer id, @RequestBody PostRequest request){
-        postService.update(id, request);
+    @GetMapping("/des")
+    public List<Post> desHeart(){
+        return postService.desHeart();
     }
-
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id){
-        postService.delete(id);
-    }
-
 }
