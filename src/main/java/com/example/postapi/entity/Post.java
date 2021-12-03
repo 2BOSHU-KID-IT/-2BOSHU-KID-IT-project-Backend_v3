@@ -29,4 +29,7 @@ public class Post {
 
     private int heart;
 
+    private String lat;
+
+    private String lon;
 }
