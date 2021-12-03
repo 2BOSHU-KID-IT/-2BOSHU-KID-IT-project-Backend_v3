@@ -32,4 +32,6 @@ public class Post {
     private String lat;
 
     private String lon;
+
+    private String street;
 }
